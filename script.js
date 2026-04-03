@@ -70,19 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     </svg>
                 `;
                 
-                // Show Alert and Reset
+                // Redirect to Home Page
                 setTimeout(() => {
-                    alert(`Login Successful!\nWelcome back to the FIR Tracking System, mobile format verified: ${mobileNumber}.`);
-                    
-                    // Reset styling and form
-                    submitBtn.style.backgroundColor = '';
-                    submitBtn.innerHTML = originalHTML;
-                    submitBtn.style.opacity = '1';
-                    submitBtn.style.pointerEvents = 'all';
-                    loginForm.reset();
-                    // Reset password text
-                    passwordInput.setAttribute('type', 'password');
-                    togglePasswordBtn.textContent = 'Show';
+                    window.location.href = 'home.html';
                 }, 600);
 
             }, 1800); // 1.8 seconds loading screen
