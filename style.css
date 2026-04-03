@@ -1,0 +1,311 @@
+/* Base Styles & Variables */
+:root {
+    --primary-blue: #163C65; /* Deep blue from the design overlay */
+    --primary-blue-hover: #102e50;
+    --text-dark: #222222;
+    --text-muted: #8E9BAE; 
+    --bg-gradient: linear-gradient(135deg, #E6F0FA 0%, #F5F9FC 100%); /* very soft icy background */
+    --card-bg: #FFFFFF;
+    --input-bg: #F1F5F9;
+    --input-border: #CBD5E1;
+    --input-border-focus: #163C65;
+    --focus-ring: rgba(22, 60, 101, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1.5rem;
+    overflow-x: hidden;
+}
+
+/* Container Wrapper */
+.container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header Area (Logo & Title) */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 10px 15px rgba(22, 60, 101, 0.1));
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.title {
+    color: var(--primary-blue);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Main Login Card */
+.login-card {
+    width: 100%;
+    background-color: var(--card-bg);
+    border-radius: 1.5rem; /* very rounded */
+    padding: 2.25rem 2rem;
+    border: 2px solid var(--primary-blue); /* distinctive blue border from screenshot */
+    box-shadow: 0 16px 40px -10px rgba(22, 60, 101, 0.15), 
+                0 0 0 4px rgba(255,255,255, 0.4) inset;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* Card Heading "Login" */
+.card-title {
+    color: var(--primary-blue);
+    font-size: 2.25rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+}
+
+/* Form layout */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Input Wrappers */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* SVG Line Icons Inside Input */
+.input-wrapper .icon {
+    position: absolute;
+    left: 1.25rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--text-muted);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* Input Type Definition */
+.input-wrapper input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 3.25rem;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-dark);
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.input-wrapper input::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+#password {
+    padding-right: 4.5rem; /* give space to 'Show' text */
+}
+
+/* Input Focus States */
+.input-wrapper input:focus {
+    outline: none;
+    border-color: var(--input-border-focus);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+.input-wrapper input:focus + .icon,
+.input-wrapper input:not(:placeholder-shown) + .icon {
+    color: var(--primary-blue);
+}
+
+/* Show / Hide Password Button */
+.toggle-password {
+    position: absolute;
+    right: 1.25rem;
+    background: none;
+    border: none;
+    color: var(--primary-blue);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.toggle-password:hover {
+    opacity: 0.7;
+}
+
+.toggle-password:focus-visible {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+/* Submit Button styling */
+.submit-btn {
+    margin-top: 1rem;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 3rem; /* Pill shaped */
+    padding: 1.1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 8px 20px rgba(22, 60, 101, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn .btn-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(22, 60, 101, 0.35);
+}
+
+.submit-btn:hover .btn-icon {
+    transform: translateX(4px);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 10px rgba(22, 60, 101, 0.25);
+}
+
+/* Forgot Password Text styling */
+.forgot-password {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.forgot-password a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.forgot-password a:hover {
+    color: var(--primary-blue-hover);
+    text-decoration: underline;
+}
+
+/* Footer / register element */
+.footer {
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.register-link {
+    color: var(--primary-blue);
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+/* Micro Focus/Autofill adjustments */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Utility Animations dynamically called by JS */
+.submit-btn.animating::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 100%;
+    transform: scale(1) translate(-50%, -50%);
+    transform-origin: 0 0;
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    0% { transform: scale(0) translate(-50%, -50%); opacity: 0.8; }
+    100% { transform: scale(30) translate(-50%, -50%); opacity: 0; }
+}
+
+@keyframes spin { 
+    100% { transform: rotate(360deg); } 
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
